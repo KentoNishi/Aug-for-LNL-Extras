@@ -17,7 +17,7 @@ IS_NOISY_PATH = (
 )
 FRAME_PATH = "./img/train_loss_plot/frames"
 N = 100
-SKIP_LOADING = True
+SKIP_LOADING = False
 FPS = 10
 
 # %%
@@ -25,10 +25,10 @@ FPS = 10
 
 def create_dataframe(clean, dirty):
 
-    dfc = pd.DataFrame(clean, columns=["loss"])
+    dfc = pd.DataFrame(dirty, columns=["loss"])
     dfc = dfc.assign(label="correct")
 
-    dfd = pd.DataFrame(dirty, columns=["loss"])
+    dfd = pd.DataFrame(clean, columns=["loss"])
     dfd = dfd.assign(label="incorrect")
 
     df = pd.concat([dfd, dfc])
@@ -69,12 +69,13 @@ if not SKIP_LOADING:
             sns.set(font_scale=1)
 
             ax = sns.histplot(
-                create_dataframe(clean_items, dirty_items),
+                create_dataframe(dirty_items, clean_items),
                 x="loss",
                 hue="label",
                 multiple="layer",
+                hue_order=["correct", "incorrect"],
                 bins=100,
-                palette=sns.color_palette("tab10")[:2],
+                palette=list(sns.color_palette("tab10")[:2]),
             )
             epoch = get_epoch(filename)
             ax.set_title(f"Loss Distribution (80% Sym. Noise, Epoch {epoch})")
