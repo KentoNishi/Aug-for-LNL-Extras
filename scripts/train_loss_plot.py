@@ -48,7 +48,7 @@ def get_epoch(filename):
 
 items = list(filter(lambda f: f.endswith(".pth.tar"), os.listdir(LOSS_DIR)))
 items.sort(key=get_epoch)
-
+items = items[:20]
 
 fig = plt.figure()
 
@@ -88,6 +88,6 @@ for file_name in items:
     if file_name.endswith(".png"):
         file_path = os.path.join(FRAME_PATH, file_name)
         images.append(imageio.imread(file_path))
-imageio.mimsave(f"{FRAME_PATH}/../animated.gif", images, fps=6)
+imageio.mimsave(f"{FRAME_PATH}/../animated.gif", images, fps=3)
 
 # %%
