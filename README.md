@@ -2,6 +2,10 @@
 
 Extra bits of disorganized code for plotting, training, etc. related to our CVPR 2021 paper ["Augmentation Strategies for Learning with Noisy Labels"](https://github.com/KentoNishi/Augmentation-for-LNL).
 
+<p align="center">
+    <img src="./scripts/img/train_loss_plot/animated.gif" />
+</p>
+
 ## Cloning
 
 This repository uses submodules. Make sure you clone with the `--recursive` flag.
