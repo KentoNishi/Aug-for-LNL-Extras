@@ -1,6 +1,3 @@
 # %%
 
-import sys
-sys.path.append("../Augmentation-for-LNL") 
-
-# %%
+# TODO: Write the plotter/animation script
