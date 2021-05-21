@@ -1,0 +1,3 @@
+[submodule "Augmentation-for-LNL"]
+	path = Augmentation-for-LNL
+	url = https://github.com/KentoNishi/Augmentation-for-LNL
