@@ -12,13 +12,14 @@ import shutil
 
 
 # %%
-LOSS_DIR = "../Augmentation-for-LNL/checkpoints/c10/90sym/AugDesc-WS/loss"
+RATIO = 80
+LOSS_DIR = f"../Augmentation-for-LNL/checkpoints/c10/{RATIO}sym/AugDesc-WS/loss"
 IS_NOISY_PATH = (
-    "../Augmentation-for-LNL/checkpoints/c10/90sym/AugDesc-WS/saved/is_noisy.npy"
+    f"../Augmentation-for-LNL/checkpoints/c10/{RATIO}sym/AugDesc-WS/saved/is_noisy.npy"
 )
 FRAME_PATH = "./img/train_loss_plot/frames"
-N = 300
-SKIP_LOADING = False
+N = 100
+SKIP_LOADING = True
 FPS = 10
 
 # %%
@@ -64,7 +65,9 @@ if not SKIP_LOADING:
     for filename in items:
         if filename.endswith(".pth.tar"):
             print(f"Loading {filename}...")
-            losses = torch.load(os.path.join(LOSS_DIR, filename)).tolist()
+            losses = torch.load(os.path.join(LOSS_DIR, filename))
+            if (len(losses) == 1): losses = losses[0]
+            else: losses = losses.tolist()
 
             clean_items, dirty_items = [], []
             for i in range(50000):
@@ -84,7 +87,7 @@ if not SKIP_LOADING:
                 palette=list(sns.color_palette("tab10")[:2]),
             )
             epoch = get_epoch(filename)
-            ax.set_title(f"Loss Distribution (90% Sym. Noise, Epoch {epoch})")
+            ax.set_title(f"Loss Distribution ({RATIO}% Sym. Noise, Epoch {epoch})")
 
             fig.savefig(f"{FRAME_PATH}/epoch{epoch}.png")
             plt.cla()
