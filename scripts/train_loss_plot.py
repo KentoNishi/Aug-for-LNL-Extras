@@ -8,15 +8,16 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 import imageio
+import shutil
 
 
 # %%
-LOSS_DIR = "../Augmentation-for-LNL/checkpoints/c10/80sym/AugDesc-WS/loss"
+LOSS_DIR = "../Augmentation-for-LNL/checkpoints/c10/90sym/AugDesc-WS/loss"
 IS_NOISY_PATH = (
-    "../Augmentation-for-LNL/checkpoints/c10/80sym/AugDesc-WS/saved/is_noisy.npy"
+    "../Augmentation-for-LNL/checkpoints/c10/90sym/AugDesc-WS/saved/is_noisy.npy"
 )
 FRAME_PATH = "./img/train_loss_plot/frames"
-N = 100
+N = 300
 SKIP_LOADING = False
 FPS = 10
 
@@ -55,6 +56,11 @@ items = items[:N]
 fig = plt.figure()
 
 if not SKIP_LOADING:
+    for root, dirs, files in os.walk(FRAME_PATH):
+        for f in files:
+            os.unlink(os.path.join(root, f))
+        for d in dirs:
+            shutil.rmtree(os.path.join(root, d))
     for filename in items:
         if filename.endswith(".pth.tar"):
             print(f"Loading {filename}...")
@@ -78,7 +84,7 @@ if not SKIP_LOADING:
                 palette=list(sns.color_palette("tab10")[:2]),
             )
             epoch = get_epoch(filename)
-            ax.set_title(f"Loss Distribution (80% Sym. Noise, Epoch {epoch})")
+            ax.set_title(f"Loss Distribution (90% Sym. Noise, Epoch {epoch})")
 
             fig.savefig(f"{FRAME_PATH}/epoch{epoch}.png")
             plt.cla()
