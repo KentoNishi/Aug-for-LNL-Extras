@@ -64,7 +64,7 @@ if not SKIP_LOADING:
     for filename in items:
         if filename.endswith(".pth.tar"):
             print(f"Loading {filename}...")
-            losses = torch.load(os.path.join(LOSS_DIR, filename))[0].tolist()
+            losses = torch.load(os.path.join(LOSS_DIR, filename)).tolist()
 
             clean_items, dirty_items = [], []
             for i in range(50000):
