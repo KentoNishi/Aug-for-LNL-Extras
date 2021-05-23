@@ -18,7 +18,7 @@ IS_NOISY_PATH = (
     f"../Augmentation-for-LNL/checkpoints/c10/{RATIO}sym/AugDesc-WS/saved/is_noisy.npy"
 )
 FRAME_PATH = "./img/train_loss_plot/frames"
-N = 50
+N = 350
 SKIP_LOADING = False
 FPS = 10
 
