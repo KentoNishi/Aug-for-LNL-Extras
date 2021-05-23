@@ -102,6 +102,6 @@ for file_name in items:
             continue
         file_path = os.path.join(FRAME_PATH, file_name)
         images.append(imageio.imread(file_path))
-imageio.mimsave(f"{FRAME_PATH}/../animated.gif", images, fps=FPS)
+imageio.mimsave(f"{FRAME_PATH}/../animated_{RATIO}.gif", images, fps=FPS)
 
 # %%

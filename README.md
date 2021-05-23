@@ -3,7 +3,7 @@
 Extra bits of unsanitized  code for plotting, training, etc. related to our CVPR 2021 paper ["Augmentation Strategies for Learning with Noisy Labels"](https://github.com/KentoNishi/Augmentation-for-LNL).
 
 <p align="center">
-  <img src="./scripts/img/train_loss_plot/animated.gif" />
+  <img src="./scripts/img/train_loss_plot/animated_80.gif" />
 </p>
 
 ## Cloning
