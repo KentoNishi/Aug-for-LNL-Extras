@@ -12,14 +12,14 @@ import shutil
 
 
 # %%
-RATIO = 80
+RATIO = 90
 LOSS_DIR = f"../Augmentation-for-LNL/checkpoints/c10/{RATIO}sym/AugDesc-WS/loss"
 IS_NOISY_PATH = (
     f"../Augmentation-for-LNL/checkpoints/c10/{RATIO}sym/AugDesc-WS/saved/is_noisy.npy"
 )
 FRAME_PATH = "./img/train_loss_plot/frames"
 N = 50
-SKIP_LOADING = True
+SKIP_LOADING = False
 FPS = 10
 
 # %%
@@ -66,12 +66,10 @@ if not SKIP_LOADING:
         if filename.endswith(".pth.tar"):
             print(f"Loading {filename}...")
             losses = torch.load(os.path.join(LOSS_DIR, filename))
-            if (len(losses) == 1): losses = losses[0]
-            else: losses = losses.tolist()
 
             clean_items, dirty_items = [], []
             for i in range(50000):
-                (dirty_items if is_noisy[i] else clean_items).append(losses[i])
+                (dirty_items if is_noisy[i] else clean_items).append(losses[i].item())
 
             print(f"Loaded {filename}\n\n")
 
