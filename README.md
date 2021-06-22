@@ -10,7 +10,7 @@ Extra bits of unsanitized code for plotting, training, etc. related to our CVPR 
 
 I found many uncommitted scripts and notebooks while cleaning up my drive. I wanted to sanitize and publish the extra code, but unfortunately, I'm lazy... so here we are!
 
-On top of these scripts, the repo includes an extension of the [Aug-for-LNL repo](https://github.com/KentoNishi/Augmentation-for-LNL) as a submodule. The submodule introduces loss saving, which is useful for generating animated loss plots like the one seen above.
+On top of these scripts, the repo includes an extension of the [Augmentation-for-LNL repo](https://github.com/KentoNishi/Augmentation-for-LNL) as a submodule. The submodule introduces loss saving, which is useful for generating animated loss plots like the one seen above.
 
 ## Cloning
 
